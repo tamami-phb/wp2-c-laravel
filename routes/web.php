@@ -20,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ MahasiswaController::class, 'getAll' ]);
 
+Route::get('/form-tambah', function() {
+    return view('form-tambah');
+});
+
+Route::post('/tambah', [ MahasiswaController::class, 'tambah' ]);
 
 
 

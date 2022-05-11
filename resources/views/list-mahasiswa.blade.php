@@ -1,5 +1,6 @@
 <h3>Daftar Mahasiswa</h3>
 
+<a href="/form-tambah">Tambah</a>
 <table border=1>
     <tr>
         <th>NIM</th>

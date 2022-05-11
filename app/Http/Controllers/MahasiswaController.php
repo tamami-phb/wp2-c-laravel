@@ -13,4 +13,13 @@ class MahasiswaController extends Controller
         return view('list-mahasiswa', [ 'data' => $data ]);
     }
 
+    public function tambah(Request $req) {
+        $mhs = new Mahasiswa;
+        $mhs->nim = $req->nim;
+        $mhs->nama = $req->nama;
+        $mhs->kelas = $req->kelas;
+        $mhs->save();
+        return $this->getAll();
+    }
+
 }
