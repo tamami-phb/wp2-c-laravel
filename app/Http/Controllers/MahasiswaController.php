@@ -22,4 +22,10 @@ class MahasiswaController extends Controller
         return $this->getAll();
     }
 
+    public function hapus($id) {
+        $mhs = Mahasiswa::find($id);
+        $mhs->delete();
+        return $this->getAll();
+    }
+
 }

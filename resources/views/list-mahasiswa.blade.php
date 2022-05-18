@@ -6,12 +6,14 @@
         <th>NIM</th>
         <th>NAMA</th>
         <th>KELAS</th>
+        <th>OPSI</th>
     </tr>
 @forelse($data as $detail)
     <tr>
         <td>{{ $detail->nim }}</td>
         <td>{{ $detail->nama }}</td>
         <td>{{ $detail->kelas }}</td>
+        <td><a href="/hapus/{{ $detail->nim }}">Hapus</a></td>
     </tr>
 @empty
   <tr>
