@@ -61,20 +61,19 @@ function refreshTabel() {
         $.post("/api/simpan", mhs, function(resp) {
             // console.log(resp);
             if(resp == "ok") refreshTabel();
+            $("#nim").val("");
+            $("#nama").val("");
+            $("#kelas").val("");
         });
     });
 
     $(document).on('click', "#hapus", function() {
         var nim = $(this).attr("nim");
-        console.log(nim);
-        var param = new Object();
-        param.nim = nim;
-        $.post("../backend/hapus.php", JSON.stringify(param), 
+        $.get("/api/hapus/" + nim,
           function(resp) {
-            var obj = JSON.parse(resp);
-            if(obj.status == "success") {
-                alert("Data berhasil terhapus");
-                window.location.href="index.html";
+            var obj = resp;
+            if(obj == "ok") {
+                refreshTabel();
             } else {
                 alert("Data gagal terhapus");
             }
@@ -83,7 +82,12 @@ function refreshTabel() {
 
     $(document).on('click', '#edit', function() {
         var nim = $(this).attr('nim');
-        window.location.href = "./ubah.html?nim=" + nim;
+        
+        $.get('/api/get-data/' + nim, function(resp) {
+            $("#nim").val(resp.nim);
+            $("#nama").val(resp.nama);
+            $("#kelas").val(resp.kelas);
+        });
     });
 </script>        
     </body>

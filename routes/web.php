@@ -41,6 +41,10 @@ Route::get('/api/get-all-data', [ ApiController::class, 'getAll' ]);
 
 Route::post('/api/simpan', [ ApiController::class, 'simpan' ]); 
 
+Route::get('/api/hapus/{nim}', [ ApiController::class, 'hapus' ]);
+
+Route::get('/api/get-data/{nim}', [ ApiController::class, 'getData' ]);
+
 
 
 

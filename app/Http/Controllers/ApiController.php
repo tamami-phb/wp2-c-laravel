@@ -16,7 +16,18 @@ class ApiController extends Controller
         $mhs->nim = $req->input('nim');
         $mhs->nama = $req->input('nama');
         $mhs->kelas = $req->input('kelas');
-        $mhs->save();
+        // $mhs->save();
+        Mahasiswa::upsert([ $mhs ], ['nim']);
         return "ok";
+    }
+
+    public function hapus($nim) {
+        $mhs = Mahasiswa::where('nim', $nim)->first();
+        $mhs->delete();
+        return "ok";
+    }
+
+    public function getData($nim) {
+        return Mahasiswa::where('nim', $nim)->first();
     }
 }
