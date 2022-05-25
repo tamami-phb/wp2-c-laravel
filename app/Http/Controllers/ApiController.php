@@ -16,8 +16,7 @@ class ApiController extends Controller
         $mhs->nim = $req->input('nim');
         $mhs->nama = $req->input('nama');
         $mhs->kelas = $req->input('kelas');
-        // $mhs->save();
-        Mahasiswa::upsert([ $mhs ], ['nim']);
+        $mhs->save();
         return "ok";
     }
 
